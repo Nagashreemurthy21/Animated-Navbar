@@ -1,0 +1,149 @@
+/* Base styles */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+  background: #0a0a23;
+  overflow-x: hidden;
+}
+
+/* Background animation */
+.stars {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #0a0a23 url("https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/media/star.png") repeat;
+  animation: moveStars 200s linear infinite;
+  z-index: -1;
+}
+
+@keyframes moveStars {
+  from {background-position: 0 0;}
+  to {background-position: -10000px 5000px;}
+}
+
+/* Navbar styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(10, 10, 35, 0.8);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.nav-links li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #00f0ff;
+  bottom: -5px;
+  left: 0;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Hamburger animation */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    left: -100%;
+    width: 100%;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 2rem;
+    transition: left 0.3s ease-in-out;
+  }
+
+  .nav-links.active {
+    left: 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* Hero section */
+.hero {
+  text-align: center;
+  margin-top: 5rem;
+  padding: 2rem;
+}
+
+.hero h1 {
+  font-size: 2rem;
+}
+
+.glow {
+  color: #00f0ff;
+  text-shadow: 0 0 5px #00f0ff, 0 0 10px #00f0ff;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #00f0ff;
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #00f0ff;
+  color: black;
+}
